@@ -3,132 +3,1554 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Unisaver — iOS & Android | Creed Production</title>
-  <meta name="description" content="Unisaver — All Downloader with VPN, encrypted vault, ad-block browser & speed test. Download for iOS and Android." />
+  <title>Unisaver — All Media Downloader | Download Videos Online</title>
+  <meta name="description" content="Download HD videos from Instagram, TikTok, YouTube, Facebook, Twitter and more. Free online video downloader with audio extraction. Trusted by 1M+ users." />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Unisaver — iOS & Android | Creed Production" />
-  <meta property="og:description" content="Reels, Shorts, Stories, Tweets, Pins downloader + VPN, encrypted vault, ad-block browser & speed test." />
+  <meta property="og:title" content="Unisaver — All Media Downloader | Download Videos Online" />
+  <meta property="og:description" content="Save HD videos, reels, stories, movies + live sports, VPN protection, encrypted vault & more - all in one powerful app." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='100%25' height='100%25' rx='24' ry='24' fill='%2300C853'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='60' fill='white'%3EU%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="logo.png" />
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
     :root{
-      --brand:#00C853; --brand-dark:#2E7D32; --ink:#0f172a; --muted:#64748b; --bg:#f8fafc;
-      --card:#ffffff; --stroke:#e2e8f0;
+      /* Blue Color Scheme */
+      --brand: #2196F3;
+      --brand-dark: #1976D2;
+      --brand-light: #42A5F5;
+      --brand-lighter: #E3F2FD;
+      --accent: #FF6B35;
+      --accent-blue: #00BCD4;
+      --ink: #0d47a1;
+      --muted: #455a64;
+      --light-muted: #78909c;
+      --bg: #fafafa;
+      --bg-secondary: #f5f7fa;
+      --bg-blue: #e8f4fd;
+      --card: #ffffff;
+      --stroke: #e1f5fe;
+      --stroke-dark: #b3e5fc;
+      --shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+      --shadow-lg: 0 8px 24px rgba(33, 150, 243, 0.2);
+      --gradient: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      --gradient-accent: linear-gradient(135deg, var(--accent-blue) 0%, var(--brand) 100%);
+      --gradient-bg: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:var(--brand);text-decoration:none}
-    .wrap{max-width:1000px;margin:auto;padding:28px}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}}
-    .badge{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px}
-    h1{font-size:clamp(28px,4.4vw,44px);margin:14px 0 8px}
-    .lead{color:var(--muted);font-size:clamp(15px,2.2vw,18px)}
-    .card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:20px}
-    .ctaRow{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;
-      font-weight:700;border:1px solid var(--stroke);background:#fff;color:var(--ink)
+
+    * { box-sizing: border-box; }
+    
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .btn svg{width:20px;height:20px}
-    .store{
-      display:flex;gap:12px;flex-wrap:wrap
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stroke);
+      z-index: 100;
+      padding: 1rem 0;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
     }
-    .store-badge{
-      display:inline-flex;align-items:center;gap:10px;border-radius:12px;border:1px solid var(--stroke);padding:10px 14px;background:#fff;color:#111;
-      font-weight:700
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .store-badge.apple{background:#000;color:#fff;border-color:#000}
-    .store-badge.google{background:#fff}
-    .features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
-    @media (max-width:700px){.features{grid-template-columns:1fr}}
-    .pill{background:#f1f5f9;border:1px solid var(--stroke);border-radius:999px;padding:8px 12px;font-size:13px}
-    footer{margin:28px 0;color:var(--muted);font-size:13px}
-    .hint{font-size:12px;color:var(--muted)}
-    .phone{
-      border-radius:20px;border:1px solid var(--stroke);background:
-        linear-gradient(180deg,#fff,#f6f9fb);
-      height:420px; display:flex;align-items:center;justify-content:center;
-      position:relative;overflow:hidden
+
+    .logo-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--ink);
     }
-    .phone:before{
-      content:""; position:absolute; inset:0;
-      background:radial-gradient(800px 300px at -10% -20%, rgba(0,200,83,.18), transparent 60%),
-                 radial-gradient(800px 300px at 110% 120%, rgba(46,125,50,.18), transparent 60%);
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow);
+      background-image: url('logo.png');
+      background-size: cover;
+      background-position: center;
+      color: transparent;
     }
-    .logoDot{width:120px;height:120px;border-radius:28px;background:linear-gradient(135deg,var(--brand),var(--brand-dark));display:grid;place-items:center;color:#fff;font-size:56px;font-weight:800}
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      min-height: 80vh;
+      background: var(--gradient-bg);
+      border-radius: 0 0 40px 40px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--ink) 0%, var(--brand) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gradient);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* Store Buttons */
+    .store-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .store-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      border: 2px solid var(--stroke-dark);
+      background: var(--card);
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+      background: var(--brand-lighter);
+    }
+
+    .store-btn.primary {
+      background: var(--gradient);
+      color: white;
+      border-color: transparent;
+    }
+
+    .store-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      background: linear-gradient(135deg, var(--brand-light) 0%, var(--brand) 100%);
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-phone {
+      width: 300px;
+      height: 600px;
+      background: linear-gradient(145deg, var(--bg-blue) 0%, var(--brand-lighter) 100%);
+      border-radius: 40px;
+      border: 8px solid var(--stroke-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .main-phone::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(600px 400px at 30% 20%, rgba(33,150,243,0.2), transparent 70%),
+        radial-gradient(600px 400px at 70% 80%, rgba(25,118,210,0.2), transparent 70%);
+    }
+
+    .phone-content {
+      width: 120px;
+      height: 120px;
+      background: var(--gradient);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 800;
+      z-index: 2;
+      box-shadow: var(--shadow);
+      background-image: url('logo.png');
+      background-size: 80%;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: transparent;
+    }
+
+    /* Web Downloader Styles */
+    .web-downloader-section {
+      padding: 2rem 0 4rem 0;
+      background: var(--bg);
+    }
+
+    .trust-indicator {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .trust-badge {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3); }
+      to { box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5); }
+    }
+
+    .ad-banner-container {
+      text-align: center;
+      margin: 2rem 0;
+      min-height: 100px;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      border: 2px dashed var(--stroke-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .ad-banner-container:empty::after {
+      content: "AdSense Banner Placeholder";
+    }
+
+    .web-downloader-card {
+      background: var(--card);
+      border: 2px solid var(--stroke);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .web-downloader-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .mode-toggle {
+      display: flex;
+      background: var(--bg-secondary);
+      border-radius: 15px;
+      padding: 4px;
+      margin-bottom: 2rem;
+      border: 2px solid var(--stroke);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .mode-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      background: transparent;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .mode-btn.active {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .mode-btn:hover:not(.active) {
+      background: var(--brand-lighter);
+      color: var(--brand);
+    }
+
+    .url-input-container {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .url-input {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      border: 2px solid var(--stroke-dark);
+      border-radius: 15px;
+      font-size: 1rem;
+      background: var(--bg);
+      color: var(--ink);
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .url-input:focus {
+      outline: none;
+      border-color: var(--brand);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .input-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .action-btn {
+      padding: 12px 24px;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: none;
+      min-width: 120px;
+      justify-content: center;
+    }
+
+    .paste-btn {
+      background: linear-gradient(135deg, #42A5F5, #1E88E5);
+      color: white;
+      box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3);
+    }
+
+    .paste-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(66, 165, 245, 0.4);
+      background: linear-gradient(135deg, #1E88E5, #1565C0);
+    }
+
+    .clear-btn {
+      background: linear-gradient(135deg, #FF7043, #F4511E);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
+    }
+
+    .clear-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 112, 67, 0.4);
+      background: linear-gradient(135deg, #F4511E, #D84315);
+    }
+
+    .download-actions {
+      margin-bottom: 1.5rem;
+    }
+
+    .download-btn {
+      width: 100%;
+      padding: 1.2rem 2rem;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: var(--shadow);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      background: linear-gradient(135deg, var(--brand-light), var(--brand));
+    }
+
+    .download-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .download-btn:disabled:hover {
+      transform: none;
+      box-shadow: var(--shadow);
+    }
+
+    .progress-section {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: var(--stroke);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient);
+      width: 0%;
+      transition: width 0.3s ease;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .progress-text {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .message-container {
+      margin-top: 1rem;
+    }
+
+    .message {
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.success {
+      background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+      color: #2E7D32;
+      border-left: 4px solid #4CAF50;
+      box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+    }
+
+    .message.error {
+      background: linear-gradient(135deg, #FFEBEE, #FFCDD2);
+      color: #C62828;
+      border-left: 4px solid #F44336;
+      box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+    }
+
+    .message.info {
+      background: linear-gradient(135deg, var(--bg-blue), var(--brand-lighter));
+      color: var(--brand-dark);
+      border-left: 4px solid var(--brand);
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 3rem 0;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+      margin: 2rem auto;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0;
+      color: var(--brand);
+    }
+
+    .stat-item p {
+      margin: 0.5rem 0 0 0;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: var(--ink);
+    }
+
+    .section-title p {
+      font-size: 1.125rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 4rem 0;
+      background: var(--bg-secondary);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 2px solid var(--stroke);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* App Screenshots Section */
+    .screenshots-section {
+      padding: 4rem 0;
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .screenshot-card {
+      position: relative;
+      aspect-ratio: 9/16;
+      background: linear-gradient(145deg, var(--bg-blue) 0%, var(--brand-lighter) 100%);
+      border-radius: 30px;
+      border: 4px solid var(--stroke-dark);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+    }
+
+    .screenshot-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(33, 150, 243, 0.3);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 0;
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      border-radius: 20px;
+      margin: 2rem 0;
+    }
+
+    .cta-content h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+
+    .cta-content p {
+      font-size: 1.125rem;
+      margin: 0 0 2rem 0;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      background: white;
+      color: var(--ink);
+      padding: 1rem 2rem;
+      border-radius: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      background: var(--brand-lighter);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 0;
+      background: var(--bg-secondary);
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--stroke);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+      }
+      
+      .screenshots-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2rem 0;
+      }
+      
+      .main-phone {
+        width: 250px;
+        height: 500px;
+      }
+      
+      .screenshots-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 3rem auto 0;
+      }
+      
+      .store-buttons,
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav {
+        padding: 0 1rem;
+      }
+      
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .input-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .action-btn {
+        width: 100%;
+      }
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: var(--shadow); }
+      50% { box-shadow: var(--shadow-lg); }
+    }
+
+    .main-phone {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .logo-icon {
+      animation: pulse 2s ease-in-out infinite;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="hero">
-      <div>
-        <span class="badge">Creed Production</span>
-        <h1>Unisaver — All Downloader</h1>
-        <p class="lead">Reels, Shorts, Stories, Tweets, Pins & more. Plus VPN for safe browsing, encrypted vault, ad-block browser, file manager & internet speed tester.</p>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo-header">
+        <div class="logo-icon">U</div>
+        <span>Unisaver</span>
+      </div>
+    </nav>
+  </header>
 
-        <div class="store" id="storeRow">
-          <!-- Apple badge -->
-          <a id="link-ios" class="store-badge apple" href="https://apps.apple.com/app/unisaver/id6746811725" aria-label="Download on the App Store">
-            <!-- Apple logo -->
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M16.365 1.43c.41 1.008.274 2.224-.35 3.128-.676 1.001-1.75 1.644-2.837 1.546-.46-1.003-.126-2.19.394-2.925.684-.962 1.91-1.718 2.793-1.749zM20.74 17.1c-.528 1.206-.779 1.73-1.45 2.79-.94 1.468-2.26 3.29-3.887 3.303-1.457.014-1.836-.956-3.42-.956-1.585 0-2.008.949-3.463.969-1.626.02-2.866-1.586-3.809-3.05-2.614-4.019-2.888-8.723-1.276-11.22 1-1.547 2.579-2.533 4.38-2.553 1.366-.026 2.655.999 3.463.999.806 0 2.389-1.234 4.023-1.053.684.028 2.61.276 3.841 2.074-.101.063-2.297 1.341-2.274 3.996.026 3.177 2.805 4.238 2.872 4.251z"/></svg>
-            <span>Download on the App Store</span>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container" style="display: contents;">
+      <div class="hero-content">
+        <div class="badge">
+          <span>🌍</span>
+          <span>All-in-One Media Downloader</span>
+        </div>
+        <h1>Save, Stream & Download Everything</h1>
+        <p>Download HD videos from Instagram, TikTok, YouTube, Facebook, Twitter and more. Free online downloader with audio extraction, plus our powerful mobile app.</p>
+        
+        <div class="store-buttons">
+          <a id="link-ios" class="store-btn" href="https://apps.apple.com/app/unisaver/id6746811725" aria-label="Download on the App Store">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M16.365 1.43c.41 1.008.274 2.224-.35 3.128-.676 1.001-1.75 1.644-2.837 1.546-.46-1.003-.126-2.19.394-2.925.684-.962 1.91-1.718 2.793-1.749zM20.74 17.1c-.528 1.206-.779 1.73-1.45 2.79-.94 1.468-2.26 3.29-3.887 3.303-1.457.014-1.836-.956-3.42-.956-1.585 0-2.008.949-3.463.969-1.626.02-2.866-1.586-3.809-3.05-2.614-4.019-2.888-8.723-1.276-11.22 1-1.547 2.579-2.533 4.38-2.553 1.366-.026 2.655.999 3.463.999.806 0 2.389-1.234 4.023-1.053.684.028 2.61.276 3.841 2.074-.101.063-2.297 1.341-2.274 3.996.026 3.177 2.805 4.238 2.872 4.251z"/>
+            </svg>
+            Download for iOS
           </a>
-          <!-- Google Play badge -->
-          <a id="link-android" class="store-badge google" href="https://play.google.com/store/apps/details?id=com.creed.unisaver" aria-label="Get it on Google Play">
-            <!-- Play triangle -->
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M3.6 2.2c-.3.2-.6.6-.6 1.1v17.4c0 .5.3.9.6 1.1l10-9.8-10-9.8zm11 10.7 2.9 2.9c.6.6 1.5.6 2.1.3.7-.3 1.1-1 1.1-1.7V7.6c0-.8-.4-1.4-1.1-1.7-.7-.3-1.5-.2-2.1.3l-2.9 2.9-1.6 1.6 1.6 1.6z"/></svg>
-            <span>Get it on Google Play</span>
+          
+          <a id="link-android" class="store-btn" href="https://play.google.com/store/apps/details?id=com.creed.unisaver" aria-label="Get it on Google Play">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M3.6 2.2c-.3.2-.6.6-.6 1.1v17.4c0 .5.3.9.6 1.1l10-9.8-10-9.8zm11 10.7 2.9 2.9c.6.6 1.5.6 2.1.3.7-.3 1.1-1 1.1-1.7V7.6c0-.8-.4-1.4-1.1-1.7-.7-.3-1.5-.2-2.1.3l-2.9 2.9-1.6 1.6 1.6 1.6z"/>
+            </svg>
+            Get on Android
           </a>
         </div>
-
-        <div class="features">
-          <span class="pill">YouTube / TikTok / Instagram / Facebook / X / Pinterest</span>
-          <span class="pill">VPN + Encrypted Vault</span>
-          <span class="pill">Ad-block Browser</span>
-          <span class="pill">Internet Speed Test</span>
-          <span class="pill">WhatsApp Status Saver</span>
-          <span class="pill">File & Gallery Manager</span>
-        </div>
-
-        <p class="hint" style="margin-top:12px">
-          By downloading, you agree to our <a href="https://docs.google.com/document/d/1nePcsitbVyAf2YcGDj8RXk3pMTLKE7-I9DZ9_62DwZw/edit?usp=sharing" target="_blank" rel="noopener">Privacy Policy</a>.
-        </p>
       </div>
 
-      <div class="card">
-        <div class="phone">
-          <div class="logoDot">U</div>
-        </div>
-        <div class="hint" style="margin-top:10px">
-          Tip: Long-press the badge to copy the link, or just tap to open your store.
+      <div class="hero-visual">
+        <div class="main-phone">
+          <div class="phone-content">U</div>
         </div>
       </div>
     </div>
+  </section>
 
-    <footer>
-      © <span id="y"></span> Creed Production •
-      <a href="https://docs.google.com/document/d/1nePcsitbVyAf2YcGDj8RXk3pMTLKE7-I9DZ9_62DwZw/edit?usp=sharing" target="_blank" rel="noopener">Privacy Policy</a>
-    </footer>
+  <div class="container">
+    <!-- Web Downloader Section -->
+    <section class="web-downloader-section">
+      <div class="section-title">
+        <h2>Try Our Free Web Downloader</h2>
+        <p>Download videos instantly in your browser - no app installation needed!</p>
+        <div class="trust-indicator">
+          <span class="trust-badge">
+            <i class="fas fa-users"></i>
+            Trusted by 1M+ users worldwide
+          </span>
+        </div>
+      </div>
+      
+      <!-- AdSense Banner Ad -->
+      <div class="ad-banner-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6568119718760724"
+             data-ad-slot=""
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+      
+      <div class="web-downloader-card">
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="videoMode">
+            <i class="fas fa-video"></i>
+            Video Download
+          </button>
+          <button class="mode-btn" id="audioMode">
+            <i class="fas fa-music"></i>
+            Audio Only (Free!)
+          </button>
+        </div>
+        
+        <div class="url-input-container">
+          <input type="text" 
+                 id="videoUrl" 
+                 class="url-input" 
+                 placeholder="Paste your video URL here (Instagram, TikTok, YouTube, Facebook, Twitter, etc.)"
+                 autocomplete="off">
+          <div class="input-actions">
+            <button id="pasteBtn" class="action-btn paste-btn">
+              <i class="fas fa-clipboard"></i>
+              <span>Paste URL</span>
+            </button>
+            <button id="clearBtn" class="action-btn clear-btn">
+              <i class="fas fa-trash-alt"></i>
+              <span>Clear</span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="download-actions">
+          <button id="processBtn" class="download-btn">
+            <i class="fas fa-download"></i>
+            <span id="processText">Find & Download Video</span>
+          </button>
+        </div>
+        
+        <!-- Progress Section -->
+        <div id="progressSection" class="progress-section" style="display: none;">
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <div id="progressText" class="progress-text">Processing...</div>
+        </div>
+        
+        <!-- Message Container -->
+        <div id="messageContainer" class="message-container"></div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>20+</h3>
+          <p>Supported Platforms</p>
+        </div>
+        <div class="stat-item">
+          <h3>6x</h3>
+          <p>Faster Downloads</p>
+        </div>
+        <div class="stat-item">
+          <h3>19+</h3>
+          <p>Languages Supported</p>
+        </div>
+        <div class="stat-item">
+          <h3>1M+</h3>
+          <p>Trusted Users</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="section-title">
+        <h2>Everything You Need in One App</h2>
+        <p>Powerful features designed to enhance your digital experience</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Multi-Platform Downloads</h3>
+          <p>Save HD videos, reels, stories, statuses & music from popular platforms including Instagram, TikTok, Facebook, X (Twitter), Pinterest, Reddit and more.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>VPN & Security</h3>
+          <p>Free VPN Services – browse safely & unlock sites with encrypted storage and privacy protection.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Ad-Block Browser</h3>
+          <p>Built-in Browser – ad-blocking, secure & optimized for downloads with pop-up protection.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">💾</div>
+          <h3>WhatsApp Status Saver</h3>
+          <p>WhatsApp Status Saver – capture & repost statuses in HD with WhatsApp Web access for easy chat management.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📂</div>
+          <h3>Private Vault & Gallery</h3>
+          <p>Private Vault & Gallery Manager – secure your media, hide sensitive files with biometric lock protection.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Batch Downloader</h3>
+          <p>Batch Downloader (6× Faster) – save multiple files at once with background downloading capability.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🎵</div>
+          <h3>Audio Downloader & Player</h3>
+          <p>Audio Downloader & Extractor – grab MP3 and soundtracks from social platforms with in-app media player.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AI-Powered Features</h3>
+          <p>AI Search Engines – discover and save trending content smarter with auto language detection for 19+ languages.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Screenshots Section -->
+    <section class="screenshots-section">
+      <div class="section-title">
+        <h2>See Unisaver in Action</h2>
+        <p>Get a preview of the app's intuitive interface and powerful features</p>
+      </div>
+      
+      <div class="screenshots-grid">
+        <div class="screenshot-card">
+          <img src="image1.png" alt="Unisaver Main Dashboard" style="width: 100%; height: 100%; object-fit: cover; border-radius: 26px;">
+        </div>
+        
+        <div class="screenshot-card">
+          <img src="image2.png" alt="Movie & Sports Hub" style="width: 100%; height: 100%; object-fit: cover; border-radius: 26px;">
+        </div>
+        
+        <div class="screenshot-card">
+          <img src="image3.png" alt="Download Manager" style="width: 100%; height: 100%; object-fit: cover; border-radius: 26px;">
+        </div>
+      </div>
+    </section>
   </div>
 
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Media Experience?</h2>
+        <p>Join thousands of users who trust Unisaver for downloading, streaming, and securing their digital content.</p>
+        
+        <div class="cta-buttons">
+          <a id="cta-ios" class="cta-btn" href="https://apps.apple.com/app/unisaver/id6746811725">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path d="M16.365 1.43c.41 1.008.274 2.224-.35 3.128-.676 1.001-1.75 1.644-2.837 1.546-.46-1.003-.126-2.19.394-2.925.684-.962 1.91-1.718 2.793-1.749zM20.74 17.1c-.528 1.206-.779 1.73-1.45 2.79-.94 1.468-2.26 3.29-3.887 3.303-1.457.014-1.836-.956-3.42-.956-1.585 0-2.008.949-3.463.969-1.626.02-2.866-1.586-3.809-3.05-2.614-4.019-2.888-8.723-1.276-11.22 1-1.547 2.579-2.533 4.38-2.553 1.366-.026 2.655.999 3.463.999.806 0 2.389-1.234 4.023-1.053.684.028 2.61.276 3.841 2.074-.101.063-2.297 1.341-2.274 3.996.026 3.177 2.805 4.238 2.872 4.251z"/>
+            </svg>
+            Download for iOS
+          </a>
+          
+          <a id="cta-android" class="cta-btn" href="https://play.google.com/store/apps/details?id=com.creed.unisaver">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path d="M3.6 2.2c-.3.2-.6.6-.6 1.1v17.4c0 .5.3.9.6 1.1l10-9.8-10-9.8zm11 10.7 2.9 2.9c.6.6 1.5.6 2.1.3.7-.3 1.1-1 1.1-1.7V7.6c0-.8-.4-1.4-1.1-1.7-.7-.3-1.5-.2-2.1.3l-2.9 2.9-1.6 1.6 1.6 1.6z"/>
+            </svg>
+            Get on Android
+          </a>
+        </div>
+        
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">
+          ✅ Unisaver = Save, organize & protect your media in one place.<br>
+          Download once. Enjoy forever.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Creed Production • 
+      <a href="https://docs.google.com/document/d/1nePcsitbVyAf2YcGDj8RXk3pMTLKE7-I9DZ9_62DwZw/edit?usp=sharing" target="_blank" rel="noopener" style="color: var(--brand);">Privacy Policy</a></p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">
+        Built for speed, privacy, and reliability. Trusted by thousands of users worldwide.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6568119718760724"
+          crossorigin="anonymous"></script>
+
   <script>
-    // Platform-aware highlighting
+    // Platform-aware highlighting and year
     (function(){
       const ua = navigator.userAgent || navigator.vendor || window.opera;
       const isiOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       const isAndroid = /Android/i.test(ua);
-      const ios = document.getElementById('link-ios');
-      const and = document.getElementById('link-android');
-      document.getElementById('y').textContent = new Date().getFullYear();
-      if (isiOS){ ios.classList.add('primary'); }
-      if (isAndroid){ and.classList.add('primary'); }
+      
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      if (isiOS) {
+        document.getElementById('link-ios').classList.add('primary');
+        document.getElementById('cta-ios').style.background = 'rgba(255,255,255,0.2)';
+        document.getElementById('cta-ios').style.color = 'white';
+        document.getElementById('cta-ios').style.border = '2px solid rgba(255,255,255,0.3)';
+      }
+      
+      if (isAndroid) {
+        document.getElementById('link-android').classList.add('primary');
+        document.getElementById('cta-android').style.background = 'rgba(255,255,255,0.2)';
+        document.getElementById('cta-android').style.color = 'white';
+        document.getElementById('cta-android').style.border = '2px solid rgba(255,255,255,0.3)';
+      }
     })();
+
+    // Initialize AdSense
+    (adsbygoogle = window.adsbygoogle || []).push({});
+
+    // Web Downloader Functionality
+    class UnisaverDownloader {
+      constructor() {
+        this.apiBaseUrl = 'https://valid-jacquelin-unisaver-f6c7b6d7.koyeb.app/api';
+        this.currentVideoData = null;
+        this.adShown = false;
+        this.isAudioMode = false;
+        
+        this.initializeElements();
+        this.bindEvents();
+        this.checkClipboard();
+      }
+
+      initializeElements() {
+        this.elements = {
+          urlInput: document.getElementById('videoUrl'),
+          processBtn: document.getElementById('processBtn'),
+          pasteBtn: document.getElementById('pasteBtn'),
+          clearBtn: document.getElementById('clearBtn'),
+          videoMode: document.getElementById('videoMode'),
+          audioMode: document.getElementById('audioMode'),
+          processText: document.getElementById('processText'),
+          progressSection: document.getElementById('progressSection'),
+          progressFill: document.getElementById('progressFill'),
+          progressText: document.getElementById('progressText'),
+          messageContainer: document.getElementById('messageContainer')
+        };
+      }
+
+      bindEvents() {
+        this.elements.processBtn.addEventListener('click', () => this.processUrl());
+        this.elements.pasteBtn.addEventListener('click', () => this.pasteFromClipboard());
+        this.elements.clearBtn.addEventListener('click', () => this.clearInput());
+        this.elements.videoMode.addEventListener('click', () => this.setMode(false));
+        this.elements.audioMode.addEventListener('click', () => this.setMode(true));
+        
+        this.elements.urlInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            this.processUrl();
+          }
+        });
+
+        this.elements.urlInput.addEventListener('input', () => {
+          if (this.elements.urlInput.value.trim()) {
+            this.elements.clearBtn.style.opacity = '1';
+          } else {
+            this.elements.clearBtn.style.opacity = '0.5';
+          }
+        });
+      }
+
+      setMode(isAudio) {
+        this.isAudioMode = isAudio;
+        
+        // Update button states
+        this.elements.videoMode.classList.toggle('active', !isAudio);
+        this.elements.audioMode.classList.toggle('active', isAudio);
+        
+        // Update button text
+        this.elements.processText.textContent = isAudio ? 'Extract Audio (Free!)' : 'Find & Download Video';
+        
+        // Show appropriate message
+        if (isAudio) {
+          this.showMessage('Audio extraction mode enabled - extract MP3 from any video for free!', 'info');
+        } else {
+          this.showMessage('Video download mode enabled - download full videos in HD!', 'info');
+        }
+      }
+
+      async checkClipboard() {
+        try {
+          if (navigator.clipboard && navigator.clipboard.readText) {
+            const text = await navigator.clipboard.readText();
+            if (this.isValidUrl(text)) {
+              this.showMessage('Found video URL in clipboard! Click the blue "Paste URL" button to use it.', 'info');
+              // Add subtle animation to paste button
+              this.elements.pasteBtn.style.animation = 'pulse 2s infinite';
+            }
+          }
+        } catch (err) {
+          // Clipboard access denied or not available
+        }
+      }
+
+      async pasteFromClipboard() {
+        try {
+          // Stop the pulse animation
+          this.elements.pasteBtn.style.animation = 'none';
+          
+          if (navigator.clipboard && navigator.clipboard.readText) {
+            const text = await navigator.clipboard.readText();
+            if (this.isValidUrl(text)) {
+              this.elements.urlInput.value = text;
+              this.showMessage('URL pasted successfully! Click download to start.', 'success');
+              // Focus on the input to show the pasted content
+              this.elements.urlInput.focus();
+            } else {
+              this.showMessage('No valid video URL found in clipboard. Please copy a link from Instagram, TikTok, YouTube, etc.', 'error');
+            }
+          }
+        } catch (err) {
+          this.showMessage('Unable to access clipboard. Please paste the URL manually using Ctrl+V.', 'error');
+        }
+      }
+
+      clearInput() {
+        this.elements.urlInput.value = '';
+        this.clearMessages();
+        this.hideProgress();
+        this.currentVideoData = null;
+        this.elements.clearBtn.style.opacity = '0.5';
+        this.showMessage('Ready for a new video URL!', 'info');
+      }
+
+      isValidUrl(text) {
+        if (!text) return false;
+        
+        const patterns = [
+          'instagram.com', 'facebook.com', 'twitter.com', 'x.com', 
+          'tiktok.com', 'pinterest.com', 'threads.net', 'youtu.be', 
+          'linkedin.com', 'reddit.com', 'snapchat.com', 'youtube.com',
+          'vimeo.com', 'dailymotion.com', 'twitch.tv'
+        ];
+        
+        return patterns.some(pattern => text.toLowerCase().includes(pattern)) || 
+               text.startsWith('http://') || text.startsWith('https://');
+      }
+
+      async processUrl() {
+        const url = this.elements.urlInput.value.trim();
+        if (!url) {
+          this.showMessage('Please enter a valid video URL first.', 'error');
+          this.elements.urlInput.focus();
+          return;
+        }
+
+        if (!this.isValidUrl(url)) {
+          this.showMessage('Please enter a valid social media URL (Instagram, TikTok, YouTube, Facebook, etc.).', 'error');
+          return;
+        }
+
+        this.setLoading(true);
+        this.clearMessages();
+        this.showProgress();
+
+        try {
+          // Show interstitial ad before processing (first time only)
+          if (!this.adShown) {
+            this.showInterstitialAd();
+            this.adShown = true;
+          }
+
+          const response = await fetch(`${this.apiBaseUrl}/download`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ 
+              url,
+              audio_only: this.isAudioMode 
+            })
+          });
+
+          const data = await response.json();
+
+          if (data.success && data.data && data.data.url) {
+            this.currentVideoData = data.data;
+            this.startDownload(data.data);
+          } else {
+            throw new Error(data.message || 'Video URL not found. Please try a different video or check the URL.');
+          }
+        } catch (error) {
+          this.showMessage(`Error: ${error.message}. For better results and more features, try our mobile app!`, 'error');
+          this.hideProgress();
+        } finally {
+          this.setLoading(false);
+        }
+      }
+
+      startDownload(videoData) {
+        const downloadType = this.isAudioMode ? 'Audio' : 'Video';
+        this.showMessage(`${downloadType} found successfully! Starting download...`, 'success');
+        
+        // Simulate download progress
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += Math.random() * 12 + 3; // More realistic progress increments
+          if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            this.completeDownload(videoData);
+          }
+          
+          this.elements.progressFill.style.width = `${progress}%`;
+          this.elements.progressText.textContent = this.isAudioMode ? 
+            `Extracting audio... ${Math.round(progress)}%` :
+            `Downloading video... ${Math.round(progress)}%`;
+        }, 250);
+      }
+
+      completeDownload(videoData) {
+        // Generate appropriate filename
+        let filename = videoData.filename || videoData.title || 'unisaver-download';
+        if (this.isAudioMode && !filename.toLowerCase().includes('.mp3')) {
+          filename = filename.replace(/\.(mp4|mov|avi|webm|mkv)$/i, '') + '.mp3';
+        }
+        
+        // Create download link and trigger download
+        const link = document.createElement('a');
+        link.href = videoData.url;
+        link.download = filename;
+        link.target = '_blank';
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        const downloadType = this.isAudioMode ? 'Audio extraction' : 'Download';
+        this.showMessage(`${downloadType} completed! Check your downloads folder.`, 'success');
+        
+        setTimeout(() => {
+          this.hideProgress();
+          this.showMessage('Want more features like batch downloads and premium tools? Get our mobile app!', 'info');
+        }, 2000);
+      }
+
+      showInterstitialAd() {
+        // Create interstitial ad overlay
+        const adOverlay = document.createElement('div');
+        adOverlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.85);
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(5px);
+        `;
+
+        const adContainer = document.createElement('div');
+        adContainer.style.cssText = `
+          background: white;
+          padding: 30px;
+          border-radius: 20px;
+          max-width: 400px;
+          text-align: center;
+          position: relative;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        `;
+
+        const countdown = { value: 5 };
+        adContainer.innerHTML = `
+          <button onclick="this.parentElement.parentElement.remove()" style="
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+          " onmouseover="this.style.color='#333'" onmouseout="this.style.color='#999'">&times;</button>
+          <div style="font-size: 3rem; margin-bottom: 20px;">⏳</div>
+          <h3 style="margin-bottom: 15px; color: #333;">Processing your ${this.isAudioMode ? 'audio extraction' : 'download'}...</h3>
+          <div style="
+            min-height: 200px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px dashed #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            margin: 20px 0;
+          ">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6568119718760724"
+                 data-ad-slot=""
+                 data-ad-format="rectangle"></ins>
+          </div>
+          <p style="font-size: 14px; color: #666; margin-top: 15px;" id="adCountdown">
+            Ad closes automatically in <span style="font-weight: bold; color: #2196F3;">5</span> seconds
+          </p>
+        `;
+
+        adOverlay.appendChild(adContainer);
+        document.body.appendChild(adOverlay);
+
+        // Initialize the ad (when ad slot is available)
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          // Ad slot not ready yet
+        }
+
+        // Countdown timer
+        const countdownElement = adContainer.querySelector('#adCountdown span');
+        const countdownInterval = setInterval(() => {
+          countdown.value--;
+          if (countdownElement) {
+            countdownElement.textContent = countdown.value;
+          }
+          if (countdown.value <= 0) {
+            clearInterval(countdownInterval);
+            if (document.body.contains(adOverlay)) {
+              adOverlay.remove();
+            }
+          }
+        }, 1000);
+
+        // Auto-close after 5 seconds
+        setTimeout(() => {
+          if (document.body.contains(adOverlay)) {
+            adOverlay.remove();
+          }
+        }, 5000);
+      }
+
+      setLoading(isLoading) {
+        if (isLoading) {
+          this.elements.processBtn.disabled = true;
+          this.elements.processBtn.innerHTML = `
+            <div class="spinner"></div>
+            Processing...
+          `;
+        } else {
+          this.elements.processBtn.disabled = false;
+          this.elements.processBtn.innerHTML = `
+            <i class="fas fa-download"></i>
+            <span id="processText">${this.isAudioMode ? 'Extract Audio (Free!)' : 'Find & Download Video'}</span>
+          `;
+          // Re-bind the processText element
+          this.elements.processText = document.getElementById('processText');
+        }
+      }
+
+      showProgress() {
+        this.elements.progressSection.style.display = 'block';
+        this.elements.progressFill.style.width = '0%';
+        this.elements.progressText.textContent = this.isAudioMode ? 'Preparing audio extraction...' : 'Preparing download...';
+      }
+
+      hideProgress() {
+        this.elements.progressSection.style.display = 'none';
+      }
+
+      showMessage(message, type = 'info') {
+        const icons = {
+          success: 'fas fa-check-circle',
+          error: 'fas fa-exclamation-triangle',
+          info: 'fas fa-info-circle'
+        };
+
+        this.elements.messageContainer.innerHTML = `
+          <div class="message ${type}">
+            <i class="${icons[type]}"></i>
+            ${message}
+          </div>
+        `;
+        
+        // Auto-clear success and info messages after 6 seconds
+        if (type === 'success' || type === 'info') {
+          setTimeout(() => {
+            this.clearMessages();
+          }, 6000);
+        }
+      }
+
+      clearMessages() {
+        this.elements.messageContainer.innerHTML = '';
+      }
+    }
+
+    // Initialize downloader when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      new UnisaverDownloader();
+    });
+
+    // Add smooth scroll behavior for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
   </script>
 </body>
 </html>
