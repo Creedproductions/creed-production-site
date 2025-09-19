@@ -8,10 +8,10 @@
   <title>Unisaver — Official App | Download, Organize & Protect Your Media</title>
   <meta name="description" content="Official Unisaver app. Save, organize and protect your media. iOS & Android with batch/background downloads, vault, ad-block browser, VPN. Free web downloader included for quick saves." />
   <meta name="keywords" content="Unisaver app, media downloader app, video downloader app, Instagram downloader, TikTok downloader, YouTube downloader, status saver, vault, VPN" />
-  <link rel="canonical" href="https://creedproductions.github.io/" />
+  <link rel="canonical" href="https://unisaver-downloader.vercel.app/" />
 
   <!-- Ad network site verification -->
-  <meta name="site-verification-16000" content="4516e1261e2dc5ffce1a2205b0c709a1"/>
+  <meta name="site-verification-16003" content="f87553f5e5603076aa4dbaa9fc666d0b"/>
 
   <!-- Favicons -->
   <link rel="icon" href="logo.png" />
@@ -38,10 +38,11 @@
 
   <!-- Fonts + Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" integrity="sha512-6VZQ8eTq1rM1GmD+ZQq3Jp5kI3HqGkzS8zVgQ4pL8a6i0GmFf7lW0/6dEkUQwz3s9dT3lM9yJm9s1i7q4g2Vxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Updated Font Awesome CDN for better icon support -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- DICLOTRANS: Banner SDK (loads a display banner in-page) -->
-  <script type="text/javascript" src="https://cdn.diclotrans.com/sdk/v1/54184/c72ce0eddd88b1a4349cc995341a469751867d2f/lib.js" defer></script>
+  <script type="text/javascript" src="https://cdn.diclotrans.com/sdk/v1/54204/ecad6b52059d10dfd47d723133d9b16512b93300/lib.js" defer></script>
   <!-- Note: interstitial script is injected only when a download starts -->
 
   <style>
@@ -68,8 +69,8 @@
     .nav-links a:hover{text-decoration:underline;opacity:1}
 
     .social-header{display:flex;gap:.5rem}
-    .social-header a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--brand-lighter);color:var(--brand-dark)}
-    .social-header a:hover{transform:translateY(-1px)}
+    .social-header a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--brand-lighter);color:var(--brand-dark);transition:all 0.3s ease}
+    .social-header a:hover{transform:translateY(-1px);background:var(--brand);color:#fff}
 
     .menu-toggle{display:none;background:transparent;border:none;font-size:1.4rem}
     .mobile-panel{display:none;position:fixed;top:56px;left:0;right:0;background:#fff;border-bottom:1px solid var(--stroke);box-shadow:0 8px 16px rgba(0,0,0,.08);z-index:120}
@@ -161,7 +162,8 @@
 
     .follow{padding:2.2rem 0;background:#fff}
     .follow-btns{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
-    .fbtn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:800;color:#fff}
+    .fbtn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:800;color:#fff;transition:all 0.3s ease}
+    .fbtn:hover{transform:translateY(-2px)}
     .fbtn.x{background:#000}
     .fbtn.whatsapp{background:#25D366}
     .fbtn.telegram{background:#229ED9}
@@ -215,9 +217,15 @@
       </div>
 
       <div class="social-header" aria-label="Follow">
-        <a href="https://x.com/UnisaverApps?t=x5Clf26uHYckFyCPukXdEQ&s=09" target="_blank" rel="noopener" aria-label="Follow on X"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://whatsapp.com/channel/0029VbBBhUM7T8bgMHp4Oq3b" target="_blank" rel="noopener" aria-label="Join WhatsApp Channel"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://t.me/unisaverdownloader" target="_blank" rel="noopener" aria-label="Join Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://x.com/UnisaverApps?t=x5Clf26uHYckFyCPukXdEQ&s=09" target="_blank" rel="noopener" aria-label="Follow on X">
+          <img src="x.png" alt="X" style="width:20px;height:20px;object-fit:contain;">
+        </a>
+        <a href="https://whatsapp.com/channel/0029VbBBhUM7T8bgMHp4Oq3b" target="_blank" rel="noopener" aria-label="Join WhatsApp Channel">
+          <img src="whatsapp.png" alt="WhatsApp" style="width:20px;height:20px;object-fit:contain;">
+        </a>
+        <a href="https://t.me/unisaverdownloader" target="_blank" rel="noopener" aria-label="Join Telegram">
+          <img src="telegram.png" alt="Telegram" style="width:20px;height:20px;object-fit:contain;">
+        </a>
       </div>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
@@ -236,9 +244,9 @@
         <a href="#support">Support</a>
       </div>
       <div class="mobile-social">
-        <a class="fbtn x" href="https://x.com/UnisaverApps?t=x5Clf26uHYckFyCPukXdEQ&s=09" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X</a>
-        <a class="fbtn whatsapp" href="https://whatsapp.com/channel/0029VbBBhUM7T8bgMHp4Oq3b" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-        <a class="fbtn telegram" href="https://t.me/unisaverdownloader" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
+        <a class="fbtn x" href="https://x.com/UnisaverApps?t=x5Clf26uHYckFyCPukXdEQ&s=09" target="_blank" rel="noopener"><img src="x.png" alt="X" style="width:16px;height:16px;object-fit:contain;"> X</a>
+        <a class="fbtn whatsapp" href="https://whatsapp.com/channel/0029VbBBhUM7T8bgMHp4Oq3b" target="_blank" rel="noopener"><img src="whatsapp.png" alt="WhatsApp" style="width:16px;height:16px;object-fit:contain;"> WhatsApp</a>
+        <a class="fbtn telegram" href="https://t.me/unisaverdownloader" target="_blank" rel="noopener"><img src="telegram.png" alt="Telegram" style="width:16px;height:16px;object-fit:contain;"> Telegram</a>
       </div>
     </div>
   </header>
@@ -252,20 +260,22 @@
 
         <div class="store-buttons">
           <a id="link-ios" class="store-btn" href="https://apps.apple.com/app/unisaver/id6746811725" rel="noopener" aria-label="Download Unisaver for iOS">
-            <i class="fa-brands fa-apple"></i> Download for iOS
+            <img src="apple.png" alt="iOS" style="width:20px;height:20px;object-fit:contain;"> Download for iOS
           </a>
           <a id="link-android" class="store-btn" href="https://play.google.com/store/apps/details?id=com.creed.unisaver" rel="noopener" aria-label="Get Unisaver on Android">
-            <i class="fa-brands fa-google-play"></i> Get on Android
+            <img src="play.png" alt="Android" style="width:20px;height:20px;object-fit:contain;"> Get on Android
           </a>
         </div>
 
         <small style="display:block;color:#335;opacity:.9">
-          Bonus: Use our free web downloader below if you can’t install the app right now.
+          Bonus: Use our free web downloader below if you can't install the app right now.
         </small>
       </div>
 
       <div class="hero-visual" aria-hidden="true">
-        <div class="main-phone"><div class="phone-content">U</div></div>
+        <div class="main-phone">
+          <img src="screenshoot1.png" alt="Unisaver App Interface" style="width:100%;height:100%;object-fit:cover;border-radius:32px;">
+        </div>
       </div>
     </div>
   </section>
@@ -299,20 +309,20 @@
           <button id="processBtn" class="download-btn" type="button"><i class="fa-solid fa-download"></i> <span id="processText">Find & Download Video</span></button>
         </div>
 
-        <div id="progressSection" class="progress-section" style="display:none">
+                  <div id="progressSection" class="progress-section" style="display:none">
           <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
           <div id="progressText" class="progress-text">Processing…</div>
         </div>
 
         <div id="messageContainer" aria-live="polite"></div>
 
-        <p style="margin:.5rem 0 0;color:#5a6;font-size:.85rem">Only download content you have rights to. Respect creators’ copyrights and platform terms.</p>
+        <p style="margin:.5rem 0 0;color:#5a6;font-size:.85rem">Only download content you have rights to. Respect creators' copyrights and platform terms.</p>
       </div>
 
       <!-- DICLOTRANS: banner placement (script renders the banner) -->
       <div id="diclotrans-banner" style="margin:18px 0;display:flex;justify-content:center">
         <div style="max-width:820px;width:100%">
-          <script type="text/javascript" src="https://cdn.diclotrans.com/sdk/v1/54184/c72ce0eddd88b1a4349cc995341a469751867d2f/lib.js"></script>
+          <script type="text/javascript" src="https://cdn.diclotrans.com/sdk/v1/54204/ecad6b52059d10dfd47d723133d9b16512b93300/lib.js"></script>
         </div>
       </div>
     </section>
@@ -348,19 +358,19 @@
         <p>Real feedback from the Unisaver community</p>
       </div>
       <div class="t-grid">
-        <article class="t-card"><div class="t-avatar">A</div><div><div class="t-name">Amara K.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">“Clean UI and super fast. Batch downloads + vault make it my go-to.”</p><div class="t-meta">iOS • Creator</div></div></article>
-        <article class="t-card"><div class="t-avatar">D</div><div><div class="t-name">Daniel M.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">“Downloads that used to fail in the browser just work in Unisaver.”</p><div class="t-meta">Android • Student</div></div></article>
-        <article class="t-card"><div class="t-avatar">S</div><div><div class="t-name">Sophia L.</div><div class="t-stars" aria-label="4.5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p style="margin:.4rem 0 0">“Status saver + private folder = chef’s kiss. Highly recommend.”</p><div class="t-meta">Android • Daily user</div></div></article>
-        <article class="t-card"><div class="t-avatar">R</div><div><div class="t-name">Rahim N.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">“Background downloads save me so much time. Worth it.”</p><div class="t-meta">iOS • Power user</div></div></article>
-        <article class="t-card"><div class="t-avatar">E</div><div><div class="t-name">Evelyn T.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">“Super simple. Paste link, hit download, done.”</p><div class="t-meta">Android • New user</div></div></article>
-        <article class="t-card"><div class="t-avatar">C</div><div><div class="t-name">Chris P.</div><div class="t-stars" aria-label="4.5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p style="margin:.4rem 0 0">“Vault and VPN together make this a complete toolkit.”</p><div class="t-meta">iOS • Traveler</div></div></article>
+        <article class="t-card"><div class="t-avatar">A</div><div><div class="t-name">Amara K.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">"Clean UI and super fast. Batch downloads + vault make it my go-to."</p><div class="t-meta">iOS • Creator</div></div></article>
+        <article class="t-card"><div class="t-avatar">D</div><div><div class="t-name">Daniel M.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">"Downloads that used to fail in the browser just work in Unisaver."</p><div class="t-meta">Android • Student</div></div></article>
+        <article class="t-card"><div class="t-avatar">S</div><div><div class="t-name">Sophia L.</div><div class="t-stars" aria-label="4.5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p style="margin:.4rem 0 0">"Status saver + private folder = chef's kiss. Highly recommend."</p><div class="t-meta">Android • Daily user</div></div></article>
+        <article class="t-card"><div class="t-avatar">R</div><div><div class="t-name">Rahim N.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">"Background downloads save me so much time. Worth it."</p><div class="t-meta">iOS • Power user</div></div></article>
+        <article class="t-card"><div class="t-avatar">E</div><div><div class="t-name">Evelyn T.</div><div class="t-stars" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p style="margin:.4rem 0 0">"Super simple. Paste link, hit download, done."</p><div class="t-meta">Android • New user</div></div></article>
+        <article class="t-card"><div class="t-avatar">C</div><div><div class="t-name">Chris P.</div><div class="t-stars" aria-label="4.5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p style="margin:.4rem 0 0">"Vault and VPN together make this a complete toolkit."</p><div class="t-meta">iOS • Traveler</div></div></article>
       </div>
     </section>
 
     <section class="screenshots-section" aria-labelledby="shots-title">
       <div class="section-title">
         <h2 id="shots-title">See Unisaver in Action</h2>
-        <p>Preview the app’s intuitive interface and powerful tools</p>
+        <p>Preview the app's intuitive interface and powerful tools</p>
       </div>
       <div class="screenshots-grid">
         <div class="screenshot-card"><img src="image1.png" alt="Unisaver main dashboard" style="width:100%;height:100%;object-fit:cover;border-radius:26px"></div>
@@ -372,10 +382,10 @@
     <section id="press" class="press" aria-labelledby="press-title">
       <div class="section-title">
         <h2 id="press-title">Press & Brand</h2>
-        <p>Need a logo or app asset? We’re happy to help.</p>
+        <p>Need a logo or app asset? We're happy to help.</p>
       </div>
       <div class="press-note">
-        <p style="margin:.2rem 0 .6rem">For brand assets (logos, screenshots, colors), email <a href="mailto:creedproduction4pps@gmail.com">creedproduction4pps@gmail.com</a>. We’ll send you the right files fast.</p>
+        <p style="margin:.2rem 0 .6rem">For brand assets (logos, screenshots, colors), email <a href="mailto:creedproduction4pps@gmail.com">creedproduction4pps@gmail.com</a>. We'll send you the right files fast.</p>
         <div style="display:flex;align-items:center;gap:12px">
           <img src="logo.png" alt="Unisaver logo preview" width="48" height="48" style="border-radius:10px;border:1px solid #e5f4ff">
           <div style="font-weight:800;color:#225">Unisaver brand, simplified — reach out for press kits.</div>
@@ -389,9 +399,9 @@
         <p>Updates, tips, and support across our channels</p>
       </div>
       <div class="follow-btns">
-        <a class="fbtn x" href="https://x.com/UnisaverApps?t=x5Clf26uHYckFyCPukXdEQ&s=09" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
-        <a class="fbtn whatsapp" href="https://whatsapp.com/channel/0029VbBBhUM7T8bgMHp4Oq3b" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp Channel</a>
-        <a class="fbtn telegram" href="https://t.me/unisaverdownloader" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
+        <a class="fbtn x" href="https://x.com/UnisaverApps?t=x5Clf26uHYckFyCPukXdEQ&s=09" target="_blank" rel="noopener"><img src="x.png" alt="X" style="width:16px;height:16px;object-fit:contain;"> X / Twitter</a>
+        <a class="fbtn whatsapp" href="https://whatsapp.com/channel/0029VbBBhUM7T8bgMHp4Oq3b" target="_blank" rel="noopener"><img src="whatsapp.png" alt="WhatsApp" style="width:16px;height:16px;object-fit:contain;"> WhatsApp Channel</a>
+        <a class="fbtn telegram" href="https://t.me/unisaverdownloader" target="_blank" rel="noopener"><img src="telegram.png" alt="Telegram" style="width:16px;height:16px;object-fit:contain;"> Telegram</a>
       </div>
     </section>
   </main>
@@ -402,8 +412,17 @@
         <h2 id="cta-title">Get the Best Unisaver Experience</h2>
         <p>Install the app for batch, background, vault, and VPN — or use the quick web downloader above.</p>
         <div class="cta-buttons">
-          <a id="cta-ios" class="cta-btn" href="https://apps.apple.com/app/unisaver/id6746811725" rel="noopener"><i class="fa-brands fa-apple"></i> Download for iOS</a>
-          <a id="cta-android" class="cta-btn" href="https://play.google.com/store/apps/details?id=com.creed.unisaver" rel="noopener"><i class="fa-brands fa-google-play"></i> Get on Android</a>
+          <a id="cta-ios" class="cta-btn" href="https://apps.apple.com/app/unisaver/id6746811725" rel="noopener"><img src="apple.png" alt="iOS" style="width:20px;height:20px;object-fit:contain;"> Download for iOS</a>
+          <a id="cta-android" class="cta-btn" href="https://play.google.com/store/apps/details?id=com.creed.unisaver" rel="noopener"><img src="play.png" alt="Android" style="width:20px;height:20px;object-fit:contain;"> Get on Android</a>
+        </div>
+        
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,255,255,0.1);border-radius:12px;backdrop-filter:blur(10px);">
+          <p style="font-size:0.9rem;margin:0 0 0.5rem;color:#fff;opacity:0.9;">
+            📧 <strong>Get App Offers:</strong> Email us for exclusive deals and early access features
+          </p>
+          <p style="font-size:0.85rem;margin:0;color:#fff;opacity:0.8;">
+            <a href="mailto:creedproduction4pps@gmail.com?subject=App%20Offers%20Request" style="color:#fff;text-decoration:underline;">creedproduction4pps@gmail.com</a>
+          </p>
         </div>
       </div>
     </div>
@@ -415,7 +434,7 @@
       <p>© <span id="year"></span> Creed Production •
         <a href="https://docs.google.com/document/d/1nePcsitbVyAf2YcGDj8RXk3pMTLKE7-I9DZ9_62DwZw/edit?usp=sharing" target="_blank" rel="noopener" style="color:var(--brand)">Privacy Policy</a>
       </p>
-      <p style="margin:.5rem 0 0;font-size:.85rem;opacity:.85">Built for speed, privacy, and reliability. Respect creators’ rights.</p>
+      <p style="margin:.5rem 0 0;font-size:.85rem;opacity:.85">Built for speed, privacy, and reliability. Respect creators' rights.</p>
     </div>
   </footer>
 
@@ -426,8 +445,8 @@
       {
         "@type":"Organization",
         "name":"Unisaver",
-        "url":"https://creedproductions.github.io/",
-        "logo":"https://creedproductions.github.io/logo.png",
+        "url":"https://unisaver-downloader.vercel.app/",
+        "logo":"https://unisaver-downloader.vercel.app/logo.png",
         "email":"creedproduction4pps@gmail.com",
         "contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"creedproduction4pps@gmail.com"}],
         "sameAs":[
@@ -438,9 +457,9 @@
       },
       {
         "@type":"WebSite",
-        "url":"https://creedproductions.github.io/",
+        "url":"https://unisaver-downloader.vercel.app/",
         "name":"Unisaver",
-        "potentialAction":{"@type":"SearchAction","target":"https://creedproductions.github.io/?q={search_term_string}","query-input":"required name=search_term_string"}
+        "potentialAction":{"@type":"SearchAction","target":"https://unisaver-downloader.vercel.app/?q={search_term_string}","query-input":"required name=search_term_string"}
       },
       {
         "@type":"MobileApplication",
@@ -509,6 +528,7 @@
         this.adShown = false;
         this.isAudioMode = false;
         this.abortCtrl = null;
+        this.requestTimeout = 30000; // 30 second timeout
 
         this.els = {
           urlInput: document.getElementById('videoUrl'),
@@ -535,6 +555,18 @@
         this.els.videoMode.addEventListener('click', () => this.setMode(false));
         this.els.audioMode.addEventListener('click', () => this.setMode(true));
         this.els.urlInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.processUrl(); });
+        
+        // Add input validation
+        this.els.urlInput.addEventListener('input', () => this.validateInput());
+      }
+
+      validateInput() {
+        const url = this.els.urlInput.value.trim();
+        if (url && !this.isSupportedUrl(url)) {
+          this.info('Please enter a valid social media URL (Instagram, TikTok, YouTube, etc.).');
+        } else if (url && this.isSupportedUrl(url)) {
+          this.clearMessages();
+        }
       }
 
       setMode(isAudio) {
@@ -548,7 +580,11 @@
       isSupportedUrl(text) {
         if (!text) return false;
         const lower = text.toLowerCase();
-        const patterns = ['instagram.com','facebook.com','twitter.com','x.com','tiktok.com','pinterest.com','threads.net','youtu.be','youtube.com','linkedin.com','reddit.com','snapchat.com','vimeo.com','dailymotion.com','twitch.tv'];
+        const patterns = [
+          'instagram.com', 'facebook.com', 'twitter.com', 'x.com', 'tiktok.com', 
+          'pinterest.com', 'threads.net', 'youtu.be', 'youtube.com', 'linkedin.com', 
+          'reddit.com', 'snapchat.com', 'vimeo.com', 'dailymotion.com', 'twitch.tv'
+        ];
         return patterns.some(p => lower.includes(p)) || /^https?:\/\//i.test(text);
       }
 
@@ -557,11 +593,17 @@
           if (navigator.clipboard?.readText) {
             const text = (await navigator.clipboard.readText()).trim();
             if (this.isSupportedUrl(text)) {
-              this.info('Found a video URL in your clipboard. Click “Paste URL” to use it.');
+              this.info('Found a video URL in your clipboard. Click "Paste URL" to use it.');
               this.els.pasteBtn.style.animation = 'pulse 2s infinite';
+              setTimeout(() => {
+                this.els.pasteBtn.style.animation = 'none';
+              }, 10000);
             }
           }
-        } catch {}
+        } catch (error) {
+          // Silently handle clipboard access errors
+          console.log('Clipboard access not available:', error.message);
+        }
       }
 
       async pasteFromClipboard() {
@@ -570,13 +612,13 @@
           this.els.pasteBtn.style.animation = 'none';
           if (this.isSupportedUrl(text)) {
             this.els.urlInput.value = text;
-            this.success('URL pasted. Click download to start.');
+            this.success('URL pasted successfully! Click download to start.');
             this.els.urlInput.focus();
           } else {
             this.error('Clipboard does not contain a valid video URL.');
           }
-        } catch {
-          this.error('Could not access clipboard. Paste manually (Ctrl/Cmd + V).');
+        } catch (error) {
+          this.error('Could not access clipboard. Please paste manually (Ctrl/Cmd + V).');
         }
       }
 
@@ -585,6 +627,10 @@
         this.currentVideoData = null;
         this.hideProgress();
         this.clearMessages();
+        if (this.abortCtrl) {
+          this.abortCtrl.abort();
+          this.abortCtrl = null;
+        }
         this.info('Ready for a new video URL.');
       }
 
@@ -604,165 +650,471 @@
         this.els.progressFill.style.width = '0%';
         this.els.progressText.textContent = msg || 'Preparing…';
       }
+      
       updateProgress(pct, msg) {
         this.els.progressFill.style.width = `${Math.max(0, Math.min(100, pct))}%`;
         if (msg) this.els.progressText.textContent = msg;
       }
-      hideProgress(){ this.els.progressSection.style.display = 'none'; }
+      
+      hideProgress() { 
+        this.els.progressSection.style.display = 'none'; 
+      }
 
-      success(msg){ this.els.messages.innerHTML = `<div class="message success"><i class="fa-solid fa-check-circle"></i>${msg}</div>`; }
-      error(msg){ this.els.messages.innerHTML = `<div class="message error"><i class="fa-solid fa-triangle-exclamation"></i>${msg}</div>`; }
-      info(msg){ this.els.messages.innerHTML = `<div class="message info"><i class="fa-solid fa-circle-info"></i>${msg}</div>`; }
-      clearMessages(){ this.els.messages.innerHTML = ''; }
+      success(msg) { 
+        this.els.messages.innerHTML = `<div class="message success"><i class="fa-solid fa-check-circle"></i>${msg}</div>`; 
+      }
+      
+      error(msg) { 
+        this.els.messages.innerHTML = `<div class="message error"><i class="fa-solid fa-triangle-exclamation"></i>${msg}</div>`; 
+      }
+      
+      info(msg) { 
+        this.els.messages.innerHTML = `<div class="message info"><i class="fa-solid fa-circle-info"></i>${msg}</div>`; 
+      }
+      
+      clearMessages() { 
+        this.els.messages.innerHTML = ''; 
+      }
 
       async processUrl() {
         const url = this.els.urlInput.value.trim();
-        if (!url || !this.isSupportedUrl(url)) {
+        if (!url) {
+          this.error('Please enter a video URL first.');
+          this.els.urlInput.focus();
+          return;
+        }
+
+        if (!this.isSupportedUrl(url)) {
           this.error('Please enter a valid social media URL (Instagram, TikTok, YouTube, etc.).');
           this.els.urlInput.focus();
           return;
         }
+
+        // Cancel any existing request
+        if (this.abortCtrl) {
+          this.abortCtrl.abort();
+        }
+        this.abortCtrl = new AbortController();
 
         this.setLoading(true);
         this.clearMessages();
         this.showProgress(this.isAudioMode ? 'Checking audio options…' : 'Finding the best download…');
 
         try {
-          if (!this.adShown) { this.showInterstitialAd(); this.adShown = true; }
+          if (!this.adShown) { 
+            this.showInterstitialAd(); 
+            this.adShown = true; 
+          }
 
-          const resp = await fetch(`${this.apiBaseUrl}/download`, {
-            method: 'POST',
-            headers: {'Content-Type':'application/json','Accept':'application/json'},
-            body: JSON.stringify({ url, audio_only: this.isAudioMode })
+          // Create timeout promise
+          const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error('Request timeout - server took too long to respond')), this.requestTimeout);
           });
 
-          const data = await resp.json().catch(() => ({}));
-          if (!resp.ok || !data?.success || !data?.data?.url) {
-            throw new Error(data?.message || `Unable to find a downloadable file (status ${resp.status}).`);
+          // Create fetch promise with proper error handling
+          const fetchPromise = fetch(`${this.apiBaseUrl}/download`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'User-Agent': 'Unisaver-Web/1.0'
+            },
+            body: JSON.stringify({ 
+              url: url, 
+              audio_only: this.isAudioMode,
+              quality: this.isAudioMode ? 'audio' : 'hd'
+            }),
+            signal: this.abortCtrl.signal
+          });
+
+          // Race between fetch and timeout
+          const response = await Promise.race([fetchPromise, timeoutPromise]);
+
+          if (!response.ok) {
+            let errorMsg = `Server error (${response.status})`;
+            try {
+              const errorData = await response.json();
+              errorMsg = errorData.message || errorData.error || errorMsg;
+            } catch (e) {
+              // Use default error message if JSON parsing fails
+            }
+            throw new Error(errorMsg);
+          }
+
+          let data;
+          try {
+            data = await response.json();
+          } catch (e) {
+            throw new Error('Invalid server response - unable to parse JSON');
+          }
+
+          if (!data || !data.success) {
+            throw new Error(data?.message || data?.error || 'Failed to process the URL');
+          }
+
+          if (!data.data || !data.data.url) {
+            throw new Error('No downloadable content found for this URL');
           }
 
           this.currentVideoData = data.data;
+          this.updateProgress(25, 'Media found! Preparing download…');
           this.success(`${this.isAudioMode ? 'Audio' : 'Video'} found. Starting download…`);
+          
+          // Start download process
           await this.startDownloadFlow(this.currentVideoData);
-        } catch (e) {
-          this.error(`${e.message || e}. For the most reliable downloads (batch/HD), use our app.`);
+
+        } catch (error) {
+          if (error.name === 'AbortError') {
+            this.info('Download cancelled by user.');
+          } else {
+            console.error('Download error:', error);
+            let errorMessage = error.message;
+            
+            // Provide more user-friendly error messages
+            if (errorMessage.includes('Failed to fetch')) {
+              errorMessage = 'Unable to connect to server. Please check your internet connection and try again.';
+            } else if (errorMessage.includes('timeout')) {
+              errorMessage = 'Server timeout. The backend might be overloaded. Please try again in a moment.';
+            } else if (errorMessage.includes('CORS')) {
+              errorMessage = 'Network security error. Please try again or use the mobile app for better reliability.';
+            }
+            
+            this.error(`${errorMessage} For the most reliable downloads, use our mobile app.`);
+          }
           this.hideProgress();
         } finally {
           this.setLoading(false);
+          this.abortCtrl = null;
         }
       }
 
       async startDownloadFlow(videoData) {
         const filename = this.resolveFilename(videoData);
-        this.updateProgress(8, this.isAudioMode ? 'Preparing audio…' : 'Preparing download…');
+        this.updateProgress(30, this.isAudioMode ? 'Preparing audio download…' : 'Preparing video download…');
 
         try {
-          this.abortCtrl = new AbortController();
-          const res = await fetch(videoData.url, { signal: this.abortCtrl.signal, credentials: 'omit', mode: 'cors' });
-          if (!res.ok) throw new Error(`File request failed (${res.status})`);
+          // Create new abort controller for download
+          const downloadAbortCtrl = new AbortController();
+          this.abortCtrl = downloadAbortCtrl;
 
-          const reader = res.body?.getReader?.();
-          if (reader) {
-            const contentLength = +res.headers.get('Content-Length') || 0;
-            let received = 0, chunks = [];
-            this.updateProgress(15, 'Downloading…');
-
-            while (true) {
-              const {done, value} = await reader.read();
-              if (done) break;
-              chunks.push(value);
-              received += value.length;
-              if (contentLength) {
-                const pct = 15 + Math.min(80, (received / contentLength) * 80);
-                this.updateProgress(pct, `Downloading… ${Math.round((pct-15)/0.8)}%`);
-              }
-            }
-            const blob = new Blob(chunks, { type: res.headers.get('Content-Type') || 'application/octet-stream' });
-            const url = URL.createObjectURL(blob);
-            this.triggerSave(url, filename);
-            URL.revokeObjectURL(url);
-            this.updateProgress(100, 'Completed!');
-            setTimeout(()=>this.hideProgress(), 1200);
-            return;
+          const downloadUrl = videoData.url || videoData.download_url || videoData.downloadUrl;
+          if (!downloadUrl) {
+            throw new Error('No download URL provided by server');
           }
 
-          const blob = await res.blob();
-          const url = URL.createObjectURL(blob);
-          this.triggerSave(url, filename);
-          URL.revokeObjectURL(url);
-          this.updateProgress(100, 'Completed!');
-          setTimeout(()=>this.hideProgress(), 1200);
-          return;
+          this.updateProgress(40, 'Starting download…');
 
-        } catch {
-          this.info('Opening the file in a new tab to complete the download (site blocks cross-origin saves).');
-          this.updateProgress(95, 'Finalizing…');
-          this.openInNewTab(videoData.url);
-          this.updateProgress(100, 'Opened in new tab');
-          setTimeout(()=>this.hideProgress(), 1200);
+          // First try direct download with fetch
+          try {
+            const response = await fetch(downloadUrl, { 
+              signal: downloadAbortCtrl.signal,
+              mode: 'cors',
+              credentials: 'omit',
+              headers: {
+                'User-Agent': 'Unisaver-Web/1.0'
+              }
+            });
+
+            if (!response.ok) {
+              throw new Error(`Download failed with status ${response.status}`);
+            }
+
+            const contentLength = parseInt(response.headers.get('Content-Length')) || 0;
+            const reader = response.body?.getReader();
+
+            if (reader && contentLength > 0) {
+              // Stream download with progress
+              let receivedLength = 0;
+              const chunks = [];
+
+              while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                chunks.push(value);
+                receivedLength += value.length;
+
+                const progress = Math.min(95, 40 + (receivedLength / contentLength) * 50);
+                this.updateProgress(progress, `Downloading… ${Math.round((receivedLength / contentLength) * 100)}%`);
+              }
+
+              const blob = new Blob(chunks, { 
+                type: response.headers.get('Content-Type') || (this.isAudioMode ? 'audio/mpeg' : 'video/mp4') 
+              });
+              
+              this.triggerDownload(blob, filename);
+              this.updateProgress(100, 'Download completed!');
+              this.success('Download completed successfully!');
+              
+            } else {
+              // Fallback to blob download
+              const blob = await response.blob();
+              this.triggerDownload(blob, filename);
+              this.updateProgress(100, 'Download completed!');
+              this.success('Download completed successfully!');
+            }
+
+          } catch (downloadError) {
+            if (downloadError.name === 'AbortError') {
+              throw downloadError;
+            }
+            
+            // If direct download fails, try opening in new tab
+            this.info('Direct download blocked by browser. Opening file in new tab…');
+            this.updateProgress(95, 'Opening download…');
+            this.openInNewTab(downloadUrl, filename);
+            this.updateProgress(100, 'Opened in new tab');
+            this.success('File opened in new tab. Right-click and save to download.');
+          }
+
+          setTimeout(() => this.hideProgress(), 2000);
+
+        } catch (error) {
+          if (error.name === 'AbortError') {
+            throw error;
+          }
+          throw new Error(`Download failed: ${error.message}`);
         }
       }
 
       resolveFilename(videoData) {
         let name = videoData.filename || videoData.title || 'unisaver-download';
-        if (this.isAudioMode && !/\.(mp3|m4a)$/i.test(name)) {
-          name = name.replace(/\.(mp4|mov|avi|webm|mkv|ts)$/i, '') + '.m4a';
+        
+        // Clean filename and add appropriate extension
+        if (this.isAudioMode && !/\.(mp3|m4a|aac|wav)$/i.test(name)) {
+          name = name.replace(/\.(mp4|mov|avi|webm|mkv|ts)$/i, '') + '.mp3';
+        } else if (!this.isAudioMode && !/\.(mp4|mov|avi|webm|mkv)$/i.test(name)) {
+          name = name.replace(/\.(mp3|m4a|aac|wav)$/i, '') + '.mp4';
         }
-        name = name.replace(/[<>:"/\\|?*\x00-\x1F]/g,'').trim();
-        if (!name) name = this.isAudioMode ? 'audio.m4a' : 'video.mp4';
-        if (!/\.[a-z0-9]{2,4}$/i.test(name)) name += this.isAudioMode ? '.m4a' : '.mp4';
+        
+        // Remove invalid filename characters
+        name = name.replace(/[<>:"/\\|?*\x00-\x1F]/g, '').trim();
+        
+        if (!name) {
+          name = this.isAudioMode ? 'unisaver-audio.mp3' : 'unisaver-video.mp4';
+        }
+        
+        // Ensure file extension exists
+        if (!/\.[a-z0-9]{2,4}$/i.test(name)) {
+          name += this.isAudioMode ? '.mp3' : '.mp4';
+        }
+        
         return name;
       }
 
-      triggerSave(objectUrlOrHttp, filename) {
-        const a = document.createElement('a');
-        a.href = objectUrlOrHttp;
-        a.download = filename;
-        a.rel = 'noopener';
-        a.target = '_blank';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
+      triggerDownload(blob, filename) {
+        try {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          a.rel = 'noopener';
+          a.target = '_blank';
+          a.style.display = 'none';
+          
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          
+          // Clean up object URL after a delay
+          setTimeout(() => URL.revokeObjectURL(url), 100);
+        } catch (error) {
+          console.error('Download trigger failed:', error);
+          throw new Error('Failed to trigger download');
+        }
       }
 
-      openInNewTab(url) {
-        const win = window.open(url, '_blank', 'noopener');
-        if (!win) this.error('Popup blocked. Please allow popups or click the link again.');
+      openInNewTab(url, filename) {
+        try {
+          const a = document.createElement('a');
+          a.href = url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.download = filename || '';
+          a.style.display = 'none';
+          
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        } catch (error) {
+          // Fallback to window.open
+          const win = window.open(url, '_blank', 'noopener,noreferrer');
+          if (!win) {
+            this.error('Popup blocked. Please allow popups for this site or try again.');
+          }
+        }
       }
 
-      // DICLOTRANS: interstitial shown once when user starts first download
+      // DICLOTRANS: Enhanced interstitial with better UX
       showInterstitialAd() {
-        // Create a simple overlay; load the interstitial SDK inside it.
         const overlay = document.createElement('div');
-        overlay.style.cssText = `position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(5px);`;
-        const box = document.createElement('div');
-        box.style.cssText = `background:#fff;padding:24px;border-radius:16px;max-width:420px;width:92%;text-align:center;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.3)`;
-        box.innerHTML = `
-          <button aria-label="Close" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:26px;cursor:pointer;color:#999">&times;</button>
-          <div style="font-size:2.6rem;margin-bottom:12px">⏳</div>
-          <h3 style="margin:0 0 8px;color:#333">Preparing your download…</h3>
-          <div id="diclotrans-interstitial" style="min-height:180px;background:#f8f9fa;border-radius:10px;border:2px dashed #dee2e6;display:flex;align-items:center;justify-content:center;color:#6c757d;margin:12px 0">
-            Loading ad…
-          </div>
-          <p style="font-size:14px;color:#666;margin-top:8px">Closes in <span id="adSecs" style="font-weight:700;color:#2196F3">5</span> seconds</p>
+        overlay.id = 'unisaver-ad-overlay';
+        overlay.style.cssText = `
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.85);
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          backdrop-filter: blur(5px);
+          animation: fadeIn 0.3s ease;
         `;
+        
+        const box = document.createElement('div');
+        box.style.cssText = `
+          background: #fff;
+          padding: 24px;
+          border-radius: 16px;
+          max-width: 420px;
+          width: 92%;
+          text-align: center;
+          position: relative;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          animation: slideIn 0.3s ease;
+        `;
+        
+        box.innerHTML = `
+          <button id="closeAdBtn" aria-label="Close" style="
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s ease;
+          ">&times;</button>
+          <div style="font-size: 2.6rem; margin-bottom: 12px;">⏳</div>
+          <h3 style="margin: 0 0 8px; color: #333;">Preparing your download…</h3>
+          <div id="diclotrans-interstitial" style="
+            min-height: 180px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px dashed #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            margin: 12px 0;
+            position: relative;
+          ">
+            <div style="text-align: center;">
+              <div style="font-size: 1.5rem; margin-bottom: 8px;">📺</div>
+              <div>Loading advertisement...</div>
+            </div>
+          </div>
+          <p style="font-size: 14px; color: #666; margin-top: 8px;">
+            Closes automatically in <span id="adCountdown" style="font-weight: 700; color: #2196F3;">5</span> seconds
+          </p>
+        `;
+        
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+          @keyframes slideIn { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+          #closeAdBtn:hover { color: #333 !important; }
+        `;
+        document.head.appendChild(style);
+        
         overlay.appendChild(box);
         document.body.appendChild(overlay);
 
-        // Inject Diclotrans interstitial script into the box
-        const s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.src = 'https://cdn.diclotrans.com/sdk/v1/54186/beb386afdb7c60cb61e4a228bf0bd64d60a9cea9/lib.js';
-        box.querySelector('#diclotrans-interstitial').appendChild(s);
+        // Inject Diclotrans interstitial script
+        try {
+          const script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://cdn.diclotrans.com/sdk/v1/54206/1ed94eb32df4f735d40d675162e081d05955e11d/lib.js';
+          script.onerror = () => {
+            box.querySelector('#diclotrans-interstitial').innerHTML = `
+              <div style="text-align: center; color: #999;">
+                <div style="font-size: 1.5rem; margin-bottom: 8px;">🎯</div>
+                <div>Ad content unavailable</div>
+              </div>
+            `;
+          };
+          box.querySelector('#diclotrans-interstitial').appendChild(script);
+        } catch (error) {
+          console.log('Ad script loading failed:', error);
+        }
 
-        const close = () => { if (document.body.contains(overlay)) overlay.remove(); };
-        box.querySelector('button').onclick = close;
-        let secs = 5;
-        const timer = setInterval(()=>{ secs--; const el = box.querySelector('#adSecs'); if (el) el.textContent = String(secs); if (secs<=0){ clearInterval(timer); close(); } },1000);
+        // Close functionality
+        const closeAd = () => {
+          if (document.body.contains(overlay)) {
+            overlay.style.animation = 'fadeIn 0.3s ease reverse';
+            setTimeout(() => {
+              if (document.body.contains(overlay)) {
+                document.body.removeChild(overlay);
+              }
+              if (document.head.contains(style)) {
+                document.head.removeChild(style);
+              }
+            }, 300);
+          }
+        };
+
+        // Close button event
+        box.querySelector('#closeAdBtn').onclick = closeAd;
+        
+        // Auto-close countdown
+        let seconds = 5;
+        const countdownEl = box.querySelector('#adCountdown');
+        const countdown = setInterval(() => {
+          seconds--;
+          if (countdownEl) countdownEl.textContent = String(seconds);
+          if (seconds <= 0) {
+            clearInterval(countdown);
+            closeAd();
+          }
+        }, 1000);
+
+        // Close on overlay click (but not on box click)
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeAd();
+        });
       }
     }
 
-    document.addEventListener('DOMContentLoaded', () => { new UnisaverDownloader(); });
+    // Initialize the downloader when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        new UnisaverDownloader();
+        console.log('Unisaver downloader initialized successfully');
+      } catch (error) {
+        console.error('Failed to initialize Unisaver downloader:', error);
+        
+        // Show fallback message if initialization fails
+        const messageContainer = document.getElementById('messageContainer');
+        if (messageContainer) {
+          messageContainer.innerHTML = `
+            <div class="message error">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              Downloader initialization failed. Please refresh the page or try using our mobile app.
+            </div>
+          `;
+        }
+      }
+    });
+
+    // Add global error handler for unhandled promise rejections
+    window.addEventListener('unhandledrejection', (event) => {
+      console.error('Unhandled promise rejection:', event.reason);
+      
+      const messageContainer = document.getElementById('messageContainer');
+      if (messageContainer && !messageContainer.innerHTML.includes('error')) {
+        messageContainer.innerHTML = `
+          <div class="message error">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            An unexpected error occurred. Please try again or use our mobile app for better reliability.
+          </div>
+        `;
+      }
+      
+      // Prevent the default browser behavior
+      event.preventDefault();
+    });
   </script>
 </body>
 </html>
